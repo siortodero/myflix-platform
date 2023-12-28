@@ -29,3 +29,12 @@ export const topRatedMovies = async () =>
     language: "it-IT",
     page: 1,
   });
+
+export const discoverMovies = async () =>
+  await getApi<PagedResponse<Movie>>("discover/movie", {
+    include_adult: true,
+    include_video: false,
+    language: "it-IT",
+    page: 1,
+    sort_by: "popularity.desc",
+  });

@@ -28,3 +28,12 @@ export const topRatedTVSeries = async () =>
     language: "it-IT",
     page: 1,
   });
+
+export const discoverTVSeries = async () =>
+  await getApi<PagedResponse<TVSerie>>("discover/tv", {
+    include_adult: true,
+    include_null_first_air_dates: false,
+    language: "it-IT",
+    page: 1,
+    sort_by: "popularity.desc",
+  });

@@ -13,8 +13,8 @@ const MainHeader: FC = () => (
     </Link>
     <ul className="flex items-center gap-x-6">
       <li>
-        <Link href={"/tv-shows"} className="text-white">
-          TV Shows
+        <Link href={"/tv-series"} className="text-white">
+          TV Series
         </Link>
       </li>
       <li>
