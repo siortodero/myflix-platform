@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { FC } from "react";
+import { SearchBox } from "..";
 
 const MainHeader: FC = () => (
   <header className="sticky flex h-16 gap-x-6 bg-[rgb(20,20,20)] px-10 py-3">
@@ -11,7 +12,7 @@ const MainHeader: FC = () => (
         className="relative h-10"
       />
     </Link>
-    <ul className="flex items-center gap-x-6">
+    <ul className="flex flex-grow items-center gap-x-6">
       <li>
         <Link href={"/tv-series"} className="text-white">
           TV Series
@@ -28,6 +29,9 @@ const MainHeader: FC = () => (
         </Link>
       </li>
     </ul>
+    <div className="relative right-0">
+      <SearchBox />
+    </div>
   </header>
 );
 

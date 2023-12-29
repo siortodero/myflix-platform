@@ -2,7 +2,9 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { FC, PropsWithChildren } from "react";
-import { MainHeader } from "..";
+import { MainHeader, initIconSet } from "..";
+
+initIconSet();
 
 // Initialize react-query client
 const initQueryClient = () =>

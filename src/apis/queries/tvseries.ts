@@ -37,3 +37,11 @@ export const discoverTVSeries = async () =>
     page: 1,
     sort_by: "popularity.desc",
   });
+
+export const searchTVSeries = async (searchTerm: string) =>
+  await getApi<PagedResponse<TVSerie>>("search/tv", {
+    query: searchTerm,
+    include_adult: true,
+    language: "it-IT",
+    page: 1,
+  });

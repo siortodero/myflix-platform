@@ -1,20 +1,31 @@
-import { discoverMovies, popularMovies, topRatedMovies } from "@/apis/queries";
+import {
+  discoverMovies,
+  popularMovies,
+  searchMovies,
+  topRatedMovies,
+} from "@/apis/queries";
 import { useQuery } from "@tanstack/react-query";
 
 export const usePopularMovies = () =>
   useQuery({
     queryKey: ["movies", "popular"],
-    queryFn: () => popularMovies(),
+    queryFn: popularMovies,
   });
 
 export const useTopRatedMovies = () =>
   useQuery({
     queryKey: ["movies", "top-rated"],
-    queryFn: () => topRatedMovies(),
+    queryFn: topRatedMovies,
   });
 
 export const useDiscoverMovies = () =>
   useQuery({
     queryKey: ["movies", "discover"],
-    queryFn: () => discoverMovies(),
+    queryFn: discoverMovies,
+  });
+
+export const useSearchMovies = (searchTerm: string) =>
+  useQuery({
+    queryKey: ["movies", "search"],
+    queryFn: () => searchMovies(searchTerm),
   });

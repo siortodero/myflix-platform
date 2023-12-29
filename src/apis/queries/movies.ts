@@ -38,3 +38,11 @@ export const discoverMovies = async () =>
     page: 1,
     sort_by: "popularity.desc",
   });
+
+export const searchMovies = async (searchTerm: string) =>
+  await getApi<PagedResponse<Movie>>("search/movie", {
+    query: searchTerm,
+    include_adult: true,
+    language: "it-IT",
+    page: 1,
+  });
