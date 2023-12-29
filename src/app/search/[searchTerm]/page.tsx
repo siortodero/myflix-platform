@@ -13,13 +13,14 @@ export interface SearchPageProps {
 }
 
 const SearchPage: FC<SearchPageProps> = ({ params: { searchTerm } }) => {
-  const { data: movies } = useSearchMovies(searchTerm);
-  const { data: series } = useSearchSeries(searchTerm);
+  const decodedSearchTerm = decodeURIComponent(searchTerm);
+  const { data: movies } = useSearchMovies(decodedSearchTerm);
+  const { data: series } = useSearchSeries(decodedSearchTerm);
 
   return (
     <div className="p-8">
       <h3 className="mb-4 text-3xl font-semibold text-white">
-        You have searched: {searchTerm}
+        You have searched: {decodedSearchTerm}
       </h3>
       <div className="flex gap-x-4">
         <PreviewScroller

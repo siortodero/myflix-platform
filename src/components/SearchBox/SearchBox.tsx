@@ -17,10 +17,11 @@ import { IconProps } from "../Icon/Icon";
 
 const SearchBox: FC = () => {
   const { searchTerm } = useParams<{ searchTerm?: string }>();
+  const decodedSearchTerm = decodeURIComponent(searchTerm || "");
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [inFocus, setFocus] = useState<boolean>(false);
-  const [searchValue, setSearchValue] = useState<string>(searchTerm || "");
+  const [searchValue, setSearchValue] = useState<string>(decodedSearchTerm);
 
   useOnClickOutside<HTMLDivElement>(containerRef, () => {
     setFocus(false);
