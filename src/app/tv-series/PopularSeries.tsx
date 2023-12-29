@@ -3,21 +3,21 @@
 
 import { PreviewScroller } from "@/components";
 import { ShowPreviewProps } from "@/components/ShowPreview/ShowPreview";
-import { useDiscoverMovies } from "@/hooks";
+import { usePopularSeries } from "@/hooks";
 import { map } from "lodash";
 import { FC } from "react";
 
-const DiscoverMovies: FC = () => {
-  const { data } = useDiscoverMovies();
+const PopularSeries: FC = () => {
+  const { data } = usePopularSeries();
 
   return (
     <PreviewScroller
-      title="Discover"
+      title="Popular"
       showPreviews={map(
         data?.data.results,
         (r) =>
           ({
-            title: r.title,
+            title: r.name,
             imagePath: r.backdrop_path,
             id: r.id,
           }) as ShowPreviewProps
@@ -26,4 +26,4 @@ const DiscoverMovies: FC = () => {
   );
 };
 
-export default DiscoverMovies;
+export default PopularSeries;
