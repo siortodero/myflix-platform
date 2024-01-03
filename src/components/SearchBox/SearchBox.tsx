@@ -8,6 +8,7 @@ import {
   FC,
   InputHTMLAttributes,
   KeyboardEvent,
+  useEffect,
   useRef,
   useState,
 } from "react";
@@ -15,30 +16,43 @@ import { match } from "ts-pattern";
 import { Icon } from "..";
 import { IconProps } from "../Icon/Icon";
 
-const SearchBox: FC = () => {
+export interface SearchBoxProps {
+  defaultOpen?: boolean;
+}
+
+const SearchBox: FC<SearchBoxProps> = ({ defaultOpen = false }) => {
   const { searchTerm } = useParams<{ searchTerm?: string }>();
   const decodedSearchTerm = decodeURIComponent(searchTerm || "");
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [inFocus, setFocus] = useState<boolean>(false);
+  const [isOpen, setOpen] = useState<boolean>(defaultOpen);
   const [searchValue, setSearchValue] = useState<string>(decodedSearchTerm);
 
+  useEffect(() => {
+    if (defaultOpen) {
+      inputRef.current?.focus();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useOnClickOutside<HTMLDivElement>(containerRef, () => {
-    setFocus(false);
+    if (!defaultOpen) {
+      setOpen(false);
+    }
   });
 
   const handleSearchKeyUp = (evt: KeyboardEvent<HTMLInputElement>) => {
-    if (evt.key === "Enter") {
+    if (evt.key === "Enter" && !isNil(searchValue)) {
       window.location.href = "/search/" + searchValue;
     }
   };
 
-  const { iconProps, inputProps } = match(inFocus)
+  const { iconProps, inputProps } = match(isOpen)
     .with(false, () => ({
       iconProps: {
         className: "cursor-pointer p-2",
         onClick: () => {
-          setFocus(true);
+          setOpen(true);
           if (!isNil(inputRef.current)) {
             inputRef.current.focus();
           }

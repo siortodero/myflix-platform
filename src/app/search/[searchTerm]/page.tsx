@@ -20,7 +20,7 @@ const SearchPage: FC<SearchPageProps> = ({ params: { searchTerm } }) => {
   return (
     <div className="p-8">
       <h3 className="mb-4 text-3xl font-semibold text-white">
-        You have searched: {decodedSearchTerm}
+        You have searched for: {decodedSearchTerm}
       </h3>
       <div className="flex gap-x-4">
         <PreviewScroller
