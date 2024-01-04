@@ -3,6 +3,7 @@ import {
   popularTVSeries,
   searchTVSeries,
   topRatedTVSeries,
+  tvSerieDetails,
 } from "@/apis/queries";
 import { ManagedCountries } from "@/infrastructure";
 import { useQuery } from "@tanstack/react-query";
@@ -45,5 +46,15 @@ export const useSearchSeries = (searchTerm: string) => {
   return useQuery({
     queryKey: [lang, "tv-series", "search"],
     queryFn: () => searchTVSeries(searchTerm, { language: lang }),
+  });
+};
+
+export const useSerieDetails = (id: string) => {
+  const { i18n } = useTranslation();
+  const lang = i18n.language as ManagedCountries;
+
+  return useQuery({
+    queryKey: [lang, "tv-series", id, "details"],
+    queryFn: () => tvSerieDetails(id, { language: lang }),
   });
 };

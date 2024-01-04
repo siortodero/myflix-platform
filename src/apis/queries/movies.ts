@@ -1,4 +1,5 @@
 import { getApi } from "@/infrastructure";
+import { Genre } from ".";
 import { PagedResponse } from "..";
 import { CountryParams } from "../request";
 
@@ -17,6 +18,14 @@ export type Movie = {
   video: boolean;
   vote_average: number;
   vote_count: number;
+};
+
+export type MovieDetails = Omit<Movie, "genre_ids"> & {
+  genres: Array<Genre>;
+  homepage: string;
+  imdb_id: string;
+  status: string;
+  tagline: string;
 };
 
 export type MoviesRequestParams = CountryParams & {};
@@ -50,5 +59,10 @@ export const searchMovies = async (
     query: searchTerm,
     include_adult: true,
     page: 1,
+    ...params,
+  });
+
+export const movieDetails = async (id: string, params: MoviesRequestParams) =>
+  await getApi<MovieDetails>(`movie/${id}`, {
     ...params,
   });

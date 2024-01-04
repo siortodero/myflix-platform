@@ -13,6 +13,7 @@ const RatedSeries: FC = () => {
   return (
     <PreviewScroller
       title="categories.top-rated"
+      showType="tv-series"
       showPreviews={map(
         data?.data.results,
         (r) =>

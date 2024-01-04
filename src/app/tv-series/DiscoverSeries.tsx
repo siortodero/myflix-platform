@@ -13,6 +13,7 @@ const DiscoverSeries: FC = () => {
   return (
     <PreviewScroller
       title="categories.discover"
+      showType="tv-series"
       showPreviews={map(
         data?.data.results,
         (r) =>

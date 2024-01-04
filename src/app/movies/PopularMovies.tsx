@@ -13,6 +13,7 @@ const PopularMovies: FC = () => {
   return (
     <PreviewScroller
       title="categories.popular"
+      showType="movies"
       showPreviews={map(
         data?.data.results,
         (r) =>

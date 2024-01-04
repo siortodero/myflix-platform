@@ -13,6 +13,7 @@ const PopularSeries: FC = () => {
   return (
     <PreviewScroller
       title="categories.popular"
+      showType="tv-series"
       showPreviews={map(
         data?.data.results,
         (r) =>

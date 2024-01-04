@@ -1,5 +1,6 @@
 import {
   discoverMovies,
+  movieDetails,
   popularMovies,
   searchMovies,
   topRatedMovies,
@@ -45,5 +46,15 @@ export const useSearchMovies = (searchTerm: string) => {
   return useQuery({
     queryKey: [lang, "movies", "search"],
     queryFn: () => searchMovies(searchTerm, { language: lang }),
+  });
+};
+
+export const useMovieDetails = (id: string) => {
+  const { i18n } = useTranslation();
+  const lang = i18n.language as ManagedCountries;
+
+  return useQuery({
+    queryKey: [lang, "movie", id, "details"],
+    queryFn: () => movieDetails(id, { language: lang }),
   });
 };
