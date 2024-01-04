@@ -1,0 +1,15 @@
+{
+  "common": {
+    "search": "Cerca"
+  },
+  "menu": {
+    "tv-series": "Serie TV",
+    "movies": "Film",
+    "my-list": "La mia lista"
+  },
+  "categories": {
+    "discover": "Scopri",
+    "popular": "Popolari",
+    "top-rated": "Più votati"
+  }
+}

@@ -1,10 +1,12 @@
 "use client";
 
+import { initIconSet, initLocalization } from "@/infrastructure";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { FC, PropsWithChildren } from "react";
-import { MainHeader, initIconSet } from "..";
+import { MainHeader } from "..";
 
 initIconSet();
+initLocalization();
 
 // Initialize react-query client
 const initQueryClient = () =>

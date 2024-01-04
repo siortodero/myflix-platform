@@ -1,5 +1,6 @@
 import { map } from "lodash";
 import { FC } from "react";
+import { Translation } from "..";
 import ShowPreview, { ShowPreviewProps } from "../ShowPreview/ShowPreview";
 
 export interface PreviewScrollerProps {
@@ -10,7 +11,9 @@ export interface PreviewScrollerProps {
 const PreviewScroller: FC<PreviewScrollerProps> = ({ title, showPreviews }) => {
   return (
     <div>
-      <h2 className="mb-2 text-xl font-semibold text-white">{title}</h2>
+      <h2 className="mb-2 text-xl font-semibold text-white">
+        <Translation label={title} />
+      </h2>
       <ul>
         {map(showPreviews, (s) => (
           <li key={s.id}>

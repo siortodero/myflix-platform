@@ -12,6 +12,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { useTranslation } from "react-i18next";
 import { match } from "ts-pattern";
 import { Icon } from "..";
 import { IconProps } from "../Icon/Icon";
@@ -27,6 +28,7 @@ const SearchBox: FC<SearchBoxProps> = ({ defaultOpen = false }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [isOpen, setOpen] = useState<boolean>(defaultOpen);
   const [searchValue, setSearchValue] = useState<string>(decodedSearchTerm);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (defaultOpen) {
@@ -75,10 +77,10 @@ const SearchBox: FC<SearchBoxProps> = ({ defaultOpen = false }) => {
   return (
     <div ref={containerRef}>
       <div className="flex min-h-10 items-center ">
-        <Icon icon={"search"} {...iconProps} />
+        <Icon icon={"search"} {...iconProps} title={t("common.search")} />
         <input
           ref={inputRef}
-          placeholder="Search"
+          placeholder={t("common.search")}
           type="search"
           className={cns([
             "rounded border bg-transparent p-2 pl-8 text-white",
