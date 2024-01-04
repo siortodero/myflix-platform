@@ -4,28 +4,46 @@ import {
   searchMovies,
   topRatedMovies,
 } from "@/apis/queries";
+import { ManagedCountries } from "@/infrastructure";
 import { useQuery } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 
-export const usePopularMovies = () =>
-  useQuery({
-    queryKey: ["movies", "popular"],
-    queryFn: popularMovies,
-  });
+export const usePopularMovies = () => {
+  const { i18n } = useTranslation();
+  const lang = i18n.language as ManagedCountries;
 
-export const useTopRatedMovies = () =>
-  useQuery({
-    queryKey: ["movies", "top-rated"],
-    queryFn: topRatedMovies,
+  return useQuery({
+    queryKey: [lang, "movies", "popular"],
+    queryFn: () => popularMovies({ language: lang }),
   });
+};
 
-export const useDiscoverMovies = () =>
-  useQuery({
-    queryKey: ["movies", "discover"],
-    queryFn: discoverMovies,
-  });
+export const useTopRatedMovies = () => {
+  const { i18n } = useTranslation();
+  const lang = i18n.language as ManagedCountries;
 
-export const useSearchMovies = (searchTerm: string) =>
-  useQuery({
-    queryKey: ["movies", "search"],
-    queryFn: () => searchMovies(searchTerm),
+  return useQuery({
+    queryKey: [lang, "movies", "top-rated"],
+    queryFn: () => topRatedMovies({ language: lang }),
   });
+};
+
+export const useDiscoverMovies = () => {
+  const { i18n } = useTranslation();
+  const lang = i18n.language as ManagedCountries;
+
+  return useQuery({
+    queryKey: [lang, "movies", "discover"],
+    queryFn: () => discoverMovies({ language: lang }),
+  });
+};
+
+export const useSearchMovies = (searchTerm: string) => {
+  const { i18n } = useTranslation();
+  const lang = i18n.language as ManagedCountries;
+
+  return useQuery({
+    queryKey: [lang, "movies", "search"],
+    queryFn: () => searchMovies(searchTerm, { language: lang }),
+  });
+};

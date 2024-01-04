@@ -4,28 +4,46 @@ import {
   searchTVSeries,
   topRatedTVSeries,
 } from "@/apis/queries";
+import { ManagedCountries } from "@/infrastructure";
 import { useQuery } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 
-export const usePopularSeries = () =>
-  useQuery({
-    queryKey: ["tv-series", "popular"],
-    queryFn: () => popularTVSeries(),
-  });
+export const usePopularSeries = () => {
+  const { i18n } = useTranslation();
+  const lang = i18n.language as ManagedCountries;
 
-export const useTopRatedSeries = () =>
-  useQuery({
-    queryKey: ["tv-series", "top-rated"],
-    queryFn: () => topRatedTVSeries(),
+  return useQuery({
+    queryKey: [lang, "tv-series", "popular"],
+    queryFn: () => popularTVSeries({ language: lang }),
   });
+};
 
-export const useDiscoverSeries = () =>
-  useQuery({
-    queryKey: ["tv-series", "discover"],
-    queryFn: () => discoverTVSeries(),
-  });
+export const useTopRatedSeries = () => {
+  const { i18n } = useTranslation();
+  const lang = i18n.language as ManagedCountries;
 
-export const useSearchSeries = (searchTerm: string) =>
-  useQuery({
-    queryKey: ["tv-series", "search"],
-    queryFn: () => searchTVSeries(searchTerm),
+  return useQuery({
+    queryKey: [lang, "tv-series", "top-rated"],
+    queryFn: () => topRatedTVSeries({ language: lang }),
   });
+};
+
+export const useDiscoverSeries = () => {
+  const { i18n } = useTranslation();
+  const lang = i18n.language as ManagedCountries;
+
+  return useQuery({
+    queryKey: [lang, "tv-series", "discover"],
+    queryFn: () => discoverTVSeries({ language: lang }),
+  });
+};
+
+export const useSearchSeries = (searchTerm: string) => {
+  const { i18n } = useTranslation();
+  const lang = i18n.language as ManagedCountries;
+
+  return useQuery({
+    queryKey: [lang, "tv-series", "search"],
+    queryFn: () => searchTVSeries(searchTerm, { language: lang }),
+  });
+};

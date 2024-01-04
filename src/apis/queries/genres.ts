@@ -1,4 +1,5 @@
 import { getApi } from "@/infrastructure";
+import { LanguageParams } from "../request";
 
 export type Genre = {
   id: number;
@@ -9,12 +10,14 @@ export type GetGenreResponse = {
   genres: Array<Genre>;
 };
 
-export const getTVSerieGenres = async () =>
+export type GetGenreRequestParams = LanguageParams & {};
+
+export const getTVSerieGenres = async (params: GetGenreRequestParams) =>
   await getApi<GetGenreResponse>("genre/tv/list", {
-    language: "it",
+    ...params,
   });
 
-export const getMovieGenres = async () =>
+export const getMovieGenres = async (params: GetGenreRequestParams) =>
   await getApi<GetGenreResponse>("genre/movie/list", {
-    language: "it",
+    ...params,
   });

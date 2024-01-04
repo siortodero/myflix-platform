@@ -36,3 +36,7 @@ export const initLocalization = (locales?: ResourceLanguage) => {
 
   return i18n;
 };
+
+export type ManagedLanguages = "it" | "en";
+
+export type ManagedCountries = "it-IT" | "en-EN";
