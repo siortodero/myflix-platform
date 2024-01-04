@@ -69,7 +69,7 @@ const SearchBox: FC<SearchBoxProps> = ({ defaultOpen = false }) => {
         className: "fixed cursor-pointer pl-2",
       } as Partial<IconProps>,
       inputProps: {
-        className: "w-80",
+        className: "w-80 p-2 pl-8",
       } as Partial<InputHTMLAttributes<HTMLInputElement>>,
     }))
     .exhaustive();
@@ -83,7 +83,7 @@ const SearchBox: FC<SearchBoxProps> = ({ defaultOpen = false }) => {
           placeholder={t("common.search")}
           type="search"
           className={cns([
-            "rounded border bg-transparent p-2 pl-8 text-white",
+            "rounded border bg-transparent text-white",
             inputProps.className,
           ])}
           onKeyUp={handleSearchKeyUp}

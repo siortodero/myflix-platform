@@ -1,4 +1,5 @@
 export { default as Icon } from "./Icon";
+export { default as LanguageSelector } from "./LanguageSelector";
 export { default as MainHeader } from "./MainHeader";
 export { default as MainLayout } from "./MainLayout";
 export { default as PreviewScroller } from "./PreviewScroller";

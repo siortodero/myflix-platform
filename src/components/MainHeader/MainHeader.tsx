@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { FC } from "react";
-import { SearchBox, Translation } from "..";
+import { LanguageSelector, SearchBox, Translation } from "..";
 import { TranslationOptionsProps } from "../Translation/Translation";
 
 export interface NavLinkProps extends TranslationOptionsProps {
@@ -38,8 +38,9 @@ const MainHeader: FC = () => (
         <NavLink link="/my-list" label="menu.my-list" />
       </li>
     </ul>
-    <div className="relative right-0">
+    <div className="relative right-0 flex gap-x-4">
       <SearchBox />
+      <LanguageSelector />
     </div>
   </header>
 );

@@ -1,6 +1,7 @@
 {
   "common": {
-    "search": "Cerca"
+    "search": "Cerca",
+    "change-language": "Change language"
   },
   "menu": {
     "tv-series": "TV series",
