@@ -4,8 +4,9 @@ import { Metadata } from "next";
 import { FC, PropsWithChildren } from "react";
 
 export const metadata: Metadata = {
-  title: "Myflix",
+  title: "Myflix platform",
   description: "Welcome to Myflix",
+  applicationName: "MyFlix",
 };
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {

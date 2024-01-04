@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useMovieDetails } from "@/hooks";
@@ -17,8 +18,18 @@ const MovieDetails: FC<MovieDetailsProps> = ({ params: { id } }) => {
   const details = data?.data;
 
   return (
-    <div className="p-8">
-      <div className="mx-20 flex gap-x-8">
+    <div className="min-h-[calc(100vh-64px)]">
+      <div className="z-5 fixed min-h-[calc(100vh-64px)]">
+        <img
+          src={
+            process.env.NEXT_PUBLIC_BASE_IMAGE_URI +
+            "original/" +
+            details?.backdrop_path
+          }
+          alt={details?.title || ""}
+        />
+      </div>
+      <div className="fixed z-10 mx-20 flex gap-x-12 p-8">
         <Image
           src={
             process.env.NEXT_PUBLIC_BASE_IMAGE_URI +
@@ -31,7 +42,7 @@ const MovieDetails: FC<MovieDetailsProps> = ({ params: { id } }) => {
           width={342}
           height={0}
         />
-        <section>
+        <section className=" bg-[rgb(20,20,20)] bg-opacity-60 p-12">
           <h3 className="mb-4 text-3xl font-semibold text-white">
             {details?.title}
           </h3>

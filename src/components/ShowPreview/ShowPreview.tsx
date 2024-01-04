@@ -19,7 +19,7 @@ const ShowPreview: FC<ShowPreviewProps> = ({
 }) => {
   return (
     <div className="relative mb-2 w-[342px]">
-      <Link href={`${showType}/${id}/details`}>
+      <Link href={`/${showType}/${id}/details`}>
         <Image
           src={process.env.NEXT_PUBLIC_BASE_IMAGE_URI + "w342/" + imagePath}
           placeholder="blur"

@@ -26,6 +26,7 @@ const SearchPage: FC<SearchPageProps> = ({ params: { searchTerm } }) => {
       <div className="flex gap-x-4">
         <PreviewScroller
           title="Movies"
+          showType="movies"
           showPreviews={map(
             movies?.data.results,
             (r) =>
@@ -38,6 +39,7 @@ const SearchPage: FC<SearchPageProps> = ({ params: { searchTerm } }) => {
         />
         <PreviewScroller
           title="TV series"
+          showType="tv-series"
           showPreviews={map(
             series?.data.results,
             (r) =>
