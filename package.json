@@ -31,7 +31,6 @@
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.14.6",
-    "@types/axios": "^0.14.0",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20",
     "@types/react": "^18",
