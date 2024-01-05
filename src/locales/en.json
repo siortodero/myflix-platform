@@ -2,7 +2,9 @@
   "common": {
     "search": "Cerca",
     "change-language": "Change language",
-    "searched-for": "You have searched for:"
+    "searched-for": "You have searched for:",
+    "seasons": "Seasons",
+    "episodes": "Episodes"
   },
   "menu": {
     "tv-series": "TV series",

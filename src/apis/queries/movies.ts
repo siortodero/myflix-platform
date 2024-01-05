@@ -26,6 +26,7 @@ export type MovieDetails = Omit<Movie, "genre_ids"> & {
   imdb_id: string;
   status: string;
   tagline: string;
+  runtime: number;
 };
 
 export type MoviesRequestParams = CountryParams & {};

@@ -2,7 +2,9 @@
   "common": {
     "search": "Cerca",
     "change-language": "Cambia lingua",
-    "searched-for": "Hai cercato:"
+    "searched-for": "Hai cercato:",
+    "seasons": "Stagioni",
+    "episodes": "Episodi"
   },
   "menu": {
     "tv-series": "Serie TV",

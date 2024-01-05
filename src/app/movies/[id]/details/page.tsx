@@ -3,7 +3,7 @@
 
 import { useMovieDetails } from "@/hooks";
 import { map } from "lodash";
-import moment from "moment";
+import moment, { duration } from "moment";
 import Image from "next/image";
 import { FC } from "react";
 
@@ -19,7 +19,7 @@ const MovieDetails: FC<MovieDetailsProps> = ({ params: { id } }) => {
 
   return (
     <div className="min-h-[calc(100vh-64px)]">
-      <div className="z-5 fixed min-h-[calc(100vh-64px)]">
+      <div className="fixed min-h-[calc(100vh-64px)]">
         <img
           src={
             process.env.NEXT_PUBLIC_BASE_IMAGE_URI +
@@ -42,19 +42,31 @@ const MovieDetails: FC<MovieDetailsProps> = ({ params: { id } }) => {
           width={342}
           height={0}
         />
-        <section className=" bg-[rgb(20,20,20)] bg-opacity-60 p-12">
+        <section className="max-w-6xl bg-[rgb(20,20,20)] bg-opacity-60 p-12">
           <h3 className="mb-4 text-3xl font-semibold text-white">
             {details?.title}
           </h3>
-          <p className="text-sm text-white">
-            {moment(details?.release_date).format("YYYY")}
-          </p>
-          {map(details?.genres, (g) => (
-            <span className="mr-1 rounded bg-gray-500 px-1 py-0.5 text-xs text-white">
-              {g.name}
-            </span>
-          ))}
-          <p className="text-white">{details?.overview}</p>
+          <div className="flex gap-x-2">
+            <p className="text-sm text-white">
+              {moment(details?.release_date).format("YYYY")}
+            </p>
+            <p className="text-sm text-white">
+              {moment
+                .utc(duration(details?.runtime, "minutes").as("milliseconds"))
+                .format("H\\h m\\m")}
+            </p>
+            {map(details?.genres, (g) => (
+              <span className="mr-0.5 rounded bg-gray-500 px-1 py-0.5 text-xs text-white">
+                {g.name}
+              </span>
+            ))}
+            {details?.adult && (
+              <span className="mr-0.5 rounded bg-red-500 px-1 py-0.5 text-xs text-white">
+                18+
+              </span>
+            )}
+          </div>
+          <p className="mt-1 text-white">{details?.overview}</p>
         </section>
       </div>
     </div>
