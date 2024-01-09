@@ -4,6 +4,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 This platform provides movies and TV shows info for example purposes.
 
+Available in Italian and English via [i18next](https://www.i18next.com/) and [react-i18next](https://react.i18next.com/).
+
+Data is retrieved via APIs by calling portal [TMDB](https://www.themoviedb.org/). Docs [here](https://developer.themoviedb.org/docs/getting-started).
+
+Styling based on [TailwindCSS](https://tailwindcss.com/).
+
+
 ## Getting Started
 
 First, run the development server:
