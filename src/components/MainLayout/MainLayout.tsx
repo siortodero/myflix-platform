@@ -13,7 +13,6 @@ const initQueryClient = () =>
   new QueryClient({
     defaultOptions: {
       queries: {
-        suspense: false, // If set to true, page will not render until query is fetched
         refetchOnWindowFocus: false, // If you focus back to the window, react-query defaults refetch windows queries
         retry: false,
       },
