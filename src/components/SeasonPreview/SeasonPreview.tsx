@@ -11,7 +11,7 @@ const SeasonPreview: FC<SeasonPreviewProps> = ({ id, title, imagePath }) => {
   return (
     <div className="relative mb-2 h-32 w-[185px] flex-none overflow-y-hidden">
       <img
-        src={process.env.NEXT_PUBLIC_BASE_IMAGE_URI + "w185/" + imagePath}
+        src={process.env.NEXT_PUBLIC_TMDB_BASE_IMAGE_URI + "w185/" + imagePath}
         alt={title}
         className="translate-y-[-33%]"
       />

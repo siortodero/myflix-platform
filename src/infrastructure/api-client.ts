@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_BASE_API_URI}/${process.env.NEXT_PUBLIC_CURRENT_API_VERSION}`,
+  baseURL: `${process.env.NEXT_PUBLIC_TMDB_BASE_API_URI}/${process.env.NEXT_PUBLIC_TMDB_CURRENT_API_VERSION}`,
   headers: {
     Accept: "application/json",
-    Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN_AUTH}`,
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_ACCESS_TOKEN_AUTH}`,
   },
 });
 
