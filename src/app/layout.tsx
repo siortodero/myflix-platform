@@ -1,5 +1,6 @@
 import { MainLayout } from "@/components";
 import "@/styles/globals.css";
+import { Analytics } from "@vercel/analytics/react";
 import { Metadata } from "next";
 import { FC, PropsWithChildren } from "react";
 
@@ -14,6 +15,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
     <html>
       <body>
         <MainLayout>{children}</MainLayout>
+        <Analytics />
       </body>
     </html>
   );
