@@ -4,7 +4,7 @@ import RatedSeries from "./RatedSeries";
 
 const Series: FC = () => {
   return (
-    <div className="flex gap-x-4 p-8">
+    <div className="flex flex-col gap-x-4 p-8">
       <PopularSeries />
       <RatedSeries />
     </div>

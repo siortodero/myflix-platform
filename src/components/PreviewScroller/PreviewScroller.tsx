@@ -20,13 +20,15 @@ const PreviewScroller: FC<PreviewScrollerProps> = ({
       <h2 className="mb-2 text-xl font-semibold text-white">
         <Translation label={title} />
       </h2>
-      <ul>
-        {map(showPreviews, (s) => (
-          <li key={s.id}>
-            <ShowPreview {...s} showType={showType} />
-          </li>
-        ))}
-      </ul>
+      <div className="max-w-full overflow-x-auto">
+        <ul className="flex gap-x-4">
+          {map(showPreviews, (s) => (
+            <li key={s.id}>
+              <ShowPreview {...s} showType={showType} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

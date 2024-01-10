@@ -5,3 +5,23 @@
 body {
   @apply bg-[rgb(20,20,20)];
 }
+
+/* width */
+::-webkit-scrollbar {
+  @apply h-2 w-2;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply rounded-md bg-[rgb(40,40,40)] bg-opacity-50 py-1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply rounded-md bg-[rgb(60,60,60)];
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-[rgb(90,90,90)];
+}
