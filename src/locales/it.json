@@ -15,5 +15,9 @@
     "discover": "Scopri",
     "popular": "Popolari",
     "top-rated": "Più votati"
+  },
+  "coming-soon": {
+    "title": "Coming soon...",
+    "description": "Per iniziare, visita le sezioni Serie TV e Film."
   }
 }
