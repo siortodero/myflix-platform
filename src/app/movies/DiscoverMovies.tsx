@@ -2,19 +2,20 @@
 
 import { PreviewScroller } from "@/components";
 import { ShowPreviewProps } from "@/components/ShowPreview/ShowPreview";
-import { useDiscoverMovies } from "@/hooks";
+import { useDiscoverMoviesPaged } from "@/hooks";
 import { map } from "lodash";
 import { FC } from "react";
 
 const DiscoverMovies: FC = () => {
-  const { data } = useDiscoverMovies();
+  const { data, fetchNextPage } = useDiscoverMoviesPaged();
 
   return (
     <PreviewScroller
       title="categories.discover"
       showType="movies"
+      onLoadNextPage={fetchNextPage}
       showPreviews={map(
-        data?.data.results,
+        data,
         (r) =>
           ({
             title: r.title,

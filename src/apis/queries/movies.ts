@@ -1,7 +1,7 @@
 import { getApi } from "@/infrastructure";
 import { Genre } from ".";
 import { PagedResponse } from "..";
-import { CountryParams } from "../request";
+import { CountryParams, PaginationParams } from "../request";
 
 export type Movie = {
   adult: boolean;
@@ -29,17 +29,15 @@ export type MovieDetails = Omit<Movie, "genre_ids"> & {
   runtime: number;
 };
 
-export type MoviesRequestParams = CountryParams & {};
+export type MoviesRequestParams = CountryParams & PaginationParams & {};
 
 export const popularMovies = async (params: MoviesRequestParams) =>
   await getApi<PagedResponse<Movie>>("movie/popular", {
-    page: 1,
     ...params,
   });
 
 export const topRatedMovies = async (params: MoviesRequestParams) =>
   await getApi<PagedResponse<Movie>>("movie/top_rated", {
-    page: 1,
     ...params,
   });
 
@@ -47,7 +45,6 @@ export const discoverMovies = async (params: MoviesRequestParams) =>
   await getApi<PagedResponse<Movie>>("discover/movie", {
     include_adult: true,
     include_video: false,
-    page: 1,
     sort_by: "popularity.desc",
     ...params,
   });
@@ -59,11 +56,12 @@ export const searchMovies = async (
   await getApi<PagedResponse<Movie>>("search/movie", {
     query: searchTerm,
     include_adult: true,
-    page: 1,
     ...params,
   });
 
-export const movieDetails = async (id: string, params: MoviesRequestParams) =>
+export type MovieRequestParams = CountryParams & {};
+
+export const movieDetails = async (id: string, params: MovieRequestParams) =>
   await getApi<MovieDetails>(`movie/${id}`, {
     ...params,
   });

@@ -7,3 +7,7 @@ export interface LanguageParams {
 export interface CountryParams {
   language: ManagedCountries;
 }
+
+export interface PaginationParams {
+  page: number;
+}

@@ -2,19 +2,20 @@
 
 import { PreviewScroller } from "@/components";
 import { ShowPreviewProps } from "@/components/ShowPreview/ShowPreview";
-import { usePopularSeries } from "@/hooks";
+import { usePopularSeriesPaged } from "@/hooks";
 import { map } from "lodash";
 import { FC } from "react";
 
 const PopularSeries: FC = () => {
-  const { data } = usePopularSeries();
+  const { data, fetchNextPage } = usePopularSeriesPaged();
 
   return (
     <PreviewScroller
       title="categories.popular"
       showType="tv-series"
+      onLoadNextPage={fetchNextPage}
       showPreviews={map(
-        data?.data.results,
+        data,
         (r) =>
           ({
             title: r.name,

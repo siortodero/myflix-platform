@@ -1,7 +1,7 @@
 import { getApi } from "@/infrastructure";
 import { Genre } from ".";
 import { PagedResponse } from "..";
-import { CountryParams } from "../request";
+import { CountryParams, PaginationParams } from "../request";
 
 export type Season = {
   air_date: string;
@@ -43,17 +43,15 @@ export type TVSerieDetails = Omit<TVSerie, "genre_ids"> & {
   type: string;
 };
 
-export type TVSeriesRequestParams = CountryParams & {};
+export type TVSeriesRequestParams = CountryParams & PaginationParams & {};
 
 export const popularTVSeries = async (params: TVSeriesRequestParams) =>
   await getApi<PagedResponse<TVSerie>>("tv/popular", {
-    page: 1,
     ...params,
   });
 
 export const topRatedTVSeries = async (params: TVSeriesRequestParams) =>
   await getApi<PagedResponse<TVSerie>>("tv/top_rated", {
-    page: 1,
     ...params,
   });
 
@@ -61,7 +59,6 @@ export const discoverTVSeries = async (params: TVSeriesRequestParams) =>
   await getApi<PagedResponse<TVSerie>>("discover/tv", {
     include_adult: true,
     include_null_first_air_dates: false,
-    page: 1,
     sort_by: "popularity.desc",
     ...params,
   });
@@ -73,13 +70,14 @@ export const searchTVSeries = async (
   await getApi<PagedResponse<TVSerie>>("search/tv", {
     query: searchTerm,
     include_adult: true,
-    page: 1,
     ...params,
   });
 
+export type TVSerieRequestParams = CountryParams & {};
+
 export const tvSerieDetails = async (
   id: string,
-  params: TVSeriesRequestParams
+  params: TVSerieRequestParams
 ) =>
   await getApi<TVSerieDetails>(`tv/${id}`, {
     ...params,
