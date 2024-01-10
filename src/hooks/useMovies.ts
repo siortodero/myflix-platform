@@ -109,14 +109,37 @@ export const useDiscoverMoviesPaged = () => {
   };
 };
 
-export const useSearchMovies = (searchTerm: string) => {
+export const useSearchMoviesPaged = (searchTerm: string) => {
   const { i18n } = useTranslation();
   const lang = i18n.language as ManagedCountries;
 
-  return useQuery({
+  const query = useInfiniteQuery({
     queryKey: [lang, "movies", "search"],
-    queryFn: () => searchMovies(searchTerm, { language: lang, page: 1 }),
+    queryFn: async ({ pageParam }) => {
+      const result = await searchMovies(searchTerm, {
+        language: lang,
+        page: pageParam,
+      });
+      return result.data.results;
+    },
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => allPages.length + 1,
+    getPreviousPageParam: (lastPage, allPages) => allPages.length - 1,
   });
+
+  const { data, fetchNextPage, hasNextPage } = query;
+
+  const handleFetchNexPage = () => {
+    if (hasNextPage) {
+      fetchNextPage();
+    }
+  };
+
+  return {
+    ...query,
+    data: flatMap(data?.pages),
+    fetchNextPage: handleFetchNexPage,
+  };
 };
 
 export const useMovieDetails = (id: string) => {
