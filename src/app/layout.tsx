@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <html>
-      <body>
+    <html className="h-full">
+      <body className="h-full">
         <MainLayout>{children}</MainLayout>
         <Analytics />
       </body>
