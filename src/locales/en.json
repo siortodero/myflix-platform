@@ -4,7 +4,9 @@
     "change-language": "Change language",
     "searched-for": "You have searched for:",
     "seasons": "Seasons",
-    "episodes": "Episodes"
+    "episodes": "Episodes",
+    "vote-average": "Vote average",
+    "genre": "Genre"
   },
   "menu": {
     "tv-series": "TV series",

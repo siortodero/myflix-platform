@@ -4,7 +4,9 @@
     "change-language": "Cambia lingua",
     "searched-for": "Hai cercato:",
     "seasons": "Stagioni",
-    "episodes": "Episodi"
+    "episodes": "Episodi",
+    "vote-average": "Media voti",
+    "genre": "Genere"
   },
   "menu": {
     "tv-series": "Serie TV",
