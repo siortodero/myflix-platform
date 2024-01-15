@@ -69,7 +69,7 @@ const SearchBox: FC<SearchBoxProps> = ({ defaultOpen = false }) => {
         className: "fixed cursor-pointer pl-2",
       } as Partial<IconProps>,
       inputProps: {
-        className: "w-80 p-2 pl-8",
+        className: "w-48 lg:w-80 p-2 pl-8",
       } as Partial<InputHTMLAttributes<HTMLInputElement>>,
     }))
     .exhaustive();

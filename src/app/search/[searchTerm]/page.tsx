@@ -21,11 +21,11 @@ const SearchPage: FC<SearchPageProps> = ({ params: { searchTerm } }) => {
 
   return (
     <div className="p-8">
-      <h3 className="mb-4 text-3xl font-semibold text-white">
+      <h3 className="mb-4 text-xl font-semibold text-white md:text-3xl">
         <Translation label="common.searched-for" /> &ldquo;{decodedSearchTerm}
         &ldquo;
       </h3>
-      <div className="flex flex-col gap-x-4 p-8">
+      <div className="flex flex-col gap-x-4 md:p-8">
         <PreviewScroller
           title="Movies"
           showType="movies"

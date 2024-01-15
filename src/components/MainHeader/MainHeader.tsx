@@ -25,7 +25,7 @@ export const NavLink: FC<NavLinkProps> = ({
 };
 
 const MainHeader: FC = () => (
-  <header className="flex flex-1 items-center gap-x-4 self-stretch lg:gap-x-6">
+  <header className="flex flex-1 items-center justify-between gap-x-4 self-stretch lg:gap-x-6">
     <Link href={"/"}>
       <img
         src="/assets/myflix-logo.png"
@@ -48,6 +48,9 @@ const MainHeader: FC = () => (
     <div className="relative right-0 hidden gap-x-4 lg:flex">
       <SearchBox />
       <LanguageSelector />
+    </div>
+    <div className="md:hidden">
+      <SearchBox />
     </div>
   </header>
 );
