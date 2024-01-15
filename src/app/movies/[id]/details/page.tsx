@@ -18,8 +18,8 @@ const MovieDetails: FC<MovieDetailsProps> = ({ params: { id } }) => {
   const details = data?.data;
 
   return (
-    <div className="min-h-[calc(100vh-64px)]">
-      <div className="fixed min-h-[calc(100vh-64px)]">
+    <div className="min-h-[calc(100vh-64px)] overflow-auto">
+      <div className="hidden min-h-[calc(100vh-64px)] md:fixed md:block">
         <img
           src={
             process.env.NEXT_PUBLIC_TMDB_BASE_IMAGE_URI +
@@ -29,7 +29,7 @@ const MovieDetails: FC<MovieDetailsProps> = ({ params: { id } }) => {
           alt={details?.title || ""}
         />
       </div>
-      <div className="fixed z-10 mx-20 flex gap-x-12 p-8">
+      <div className="z-10 flex flex-col gap-x-12 p-8 md:fixed md:mx-20 md:flex-row">
         <Image
           src={
             process.env.NEXT_PUBLIC_TMDB_BASE_IMAGE_URI +
@@ -42,7 +42,7 @@ const MovieDetails: FC<MovieDetailsProps> = ({ params: { id } }) => {
           width={342}
           height={0}
         />
-        <section className="max-w-6xl bg-[rgb(20,20,20)] bg-opacity-60 p-12">
+        <section className="mt-6 md:mt-0 md:max-w-6xl md:bg-[rgb(20,20,20)] md:bg-opacity-60 md:p-12">
           <h3 className="mb-4 text-3xl font-semibold text-white">
             {details?.title}
           </h3>
