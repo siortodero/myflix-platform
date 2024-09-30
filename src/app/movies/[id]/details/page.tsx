@@ -58,7 +58,7 @@ const MovieDetails: FC<MovieDetailsProps> = ({ params: { id } }) => {
             <p className="mr-2 text-sm text-white">
               {moment(details?.release_date).format("YYYY")}
             </p>
-            <p className="text-sm text-white">
+            <p className="mr-2 text-sm text-white">
               {moment
                 .utc(duration(details?.runtime, "minutes").as("milliseconds"))
                 .format("H\\h m\\m")}
