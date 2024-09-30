@@ -12,7 +12,7 @@ export interface TranslationOptionsProps {
 }
 
 export interface TranslationProps extends TranslationOptionsProps {
-  label?: string;
+  label?: string | string[];
 }
 
 const Translation: FC<TranslationProps> = ({
